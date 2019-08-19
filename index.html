@@ -7,6 +7,11 @@
 	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	<!-- start of web manifest -->
+	<link rel="manifest" href="https://www.christophior.com/streams/manifest.json">
+	<!-- end of web manifest -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#fff" />
 </head>
 
 <body>
@@ -100,6 +105,17 @@
 			ReactDOM.render(<App />, document.getElementById('root'))
 		</script>
 
+	<!-- register service worker -->
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('https://www.christophior.com/streams/service-worker.js')
+					.then(function () { console.log("Service Worker Registered, Cheers to PWA Fire!"); });
+			}
+			);
+		}
+	</script>
+	<!-- end of service worker -->
 </body>
 
 </html>
